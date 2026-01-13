@@ -85,7 +85,7 @@ inline bool track_grad_bc(const std::shared_ptr<Tensor>& a, const std::shared_pt
 //ADD
 inline std::shared_ptr<Tensor> add_bc(const std::shared_ptr<Tensor>& a, const std::shared_ptr<Tensor>& b) {
   if (!a->is_contiguous() || !b->is_contiguous())
-    throw std::runtime_error("add_bc: requires contiguous tensors (for now)");
+    throw std::runtime_error("add_bc: requires contiguous tensors");
 
   vector_int out_shape = broadcast_shape(a->shape, b->shape);
   Size out_numel = prod(out_shape);
@@ -158,7 +158,7 @@ inline std::shared_ptr<Tensor> add_bc(const std::shared_ptr<Tensor>& a, const st
 //MUL
 inline std::shared_ptr<Tensor> mul_bc(const std::shared_ptr<Tensor>& a, const std::shared_ptr<Tensor>& b) {
   if (!a->is_contiguous() || !b->is_contiguous())
-    throw std::runtime_error("mul_bc: requires contiguous tensors (for now)");
+    throw std::runtime_error("mul_bc: requires contiguous tensors");
 
   vector_int out_shape = broadcast_shape(a->shape, b->shape);
   Size out_numel = prod(out_shape);
